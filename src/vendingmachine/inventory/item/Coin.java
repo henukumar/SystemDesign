@@ -14,4 +14,8 @@ public enum Coin implements InventoryItem {
         this.denomination = denomination;
     }
 
+    public int getDenomination() {
+        return denomination;
+    }
+
 }

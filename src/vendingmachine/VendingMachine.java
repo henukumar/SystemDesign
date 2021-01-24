@@ -1,17 +1,17 @@
 package vendingmachine;
 
+import vendingmachine.exception.NotFullPaidException;
+import vendingmachine.exception.NotSufficientChangeException;
+import vendingmachine.exception.SoldOutException;
 import vendingmachine.inventory.item.Coin;
 import vendingmachine.inventory.item.Product;
-import vendingmachine.utility.Bucket;
-
-import java.util.List;
+import vendingmachine.utility.VendingMachineResponse;
 
 public interface VendingMachine {
 
-    int getPrice(Product product);
+    int selectItemAndGetPrice(Product product) throws SoldOutException;
     void insertCoin(Coin coin);
-    Bucket<Product, List<Coin>> collectProductAndChange();
-    List<Coin> refund(int quantity, Product product);
+    VendingMachineResponse collectProductAndChange() throws NotSufficientChangeException, NotFullPaidException;
     void reset();
 
 }
